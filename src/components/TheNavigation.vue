@@ -17,9 +17,8 @@ export default {
 <style scoped>
   #nav {
     display: flex;
-    justify-content: space-between;
-    max-width: 600px;
-    margin: 0 auto;
+    justify-content: center;
+    padding: 0 30px;
   }
 
   #nav a {
