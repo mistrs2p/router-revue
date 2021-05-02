@@ -18,7 +18,7 @@ export default {
   computed: {
     destination() {
       return store.destinations.find(
-        destination => destination.id == this.$route.params.id
+        destination => destination.slug == this.$route.params.slug
       )
     }
   }
