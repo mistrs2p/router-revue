@@ -21,4 +21,14 @@ export default {
     max-width: 600px;
     margin: 0 auto;
   }
+
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+    padding: 0 10px;
+  }
+
+  #nav a.my-active-class {
+    color: #ab26ab;
+  }
 </style>
