@@ -1,6 +1,8 @@
 <template>
-  <TheNavigation />
-  <router-view />
+  <div id="app">
+    <TheNavigation />
+    <router-view />
+  </div>
 </template>
 
 <script>
