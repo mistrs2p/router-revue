@@ -6,6 +6,7 @@
         :src="require('@/assets/' + destination.image)" 
         :alt="destination.name"
       >
+      <p>{{ destination.description }}</p>
     </div>
   </section>
 </template>
