@@ -1,14 +1,34 @@
 <template>
-  <section class="destination">
-    <h1>{{destination.name}}</h1>
-    <div class="destination-details">
-      <img 
-        :src="require('@/assets/' + destination.image)" 
-        :alt="destination.name"
-      >
-      <p>{{ destination.description }}</p>
-    </div>
-  </section>
+  <div>
+    <section class="destination">
+      <h1>{{destination.name}}</h1>
+      <div class="destination-details">
+        <img 
+          :src="require('@/assets/' + destination.image)" 
+          :alt="destination.name"
+        >
+        <p>{{ destination.description }}</p>
+      </div>
+    </section>
+    <section class="experiences">
+      <h2>Top Experiences in {{ destination.name }}</h2>
+      <div class="cards">
+        <div 
+          class="card"
+          v-for="experience of destination.experiences"
+          :key="experience.slug"  
+        >
+          <img 
+            :src="require('@/assets/' + experience.image)" 
+            :alt="experience.name"
+          >
+          <span class="experience__text">
+            {{ experience.text }}
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -20,7 +40,11 @@ export default {
       return store.destinations.find(
         destination => destination.slug == this.$route.params.slug
       )
-    }
+    },
+    // experiences() {
+    //   const experiences = store.destinations.experiences 
+    //   return experiences
+    // }
   }
 }
 </script>
@@ -41,4 +65,29 @@ export default {
     font-size: 20px;
     text-align: left;
   }
+
+  .cards {
+    display: flex;
+  }
+
+  .cards img {
+    max-height: 200px;
+  }
+
+  .card {
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .card__text {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: aliceblue;
+    font-size: 25px;
+    font-weight: bold;
+    /* text-decoration: none; */
+  }
+
 </style>
