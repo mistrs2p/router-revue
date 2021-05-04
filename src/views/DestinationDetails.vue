@@ -13,7 +13,7 @@
     </section>
     <section class="experiences">
       <h2>Top Experiences in {{ destination.name }}</h2>
-      <div class="cards">
+      <div class="cards" id="experience">
         <div 
           class="card"
           v-for="experience of destination.experiences"
@@ -22,7 +22,8 @@
         <router-link
           :to="{
             name: 'experienceDetails',
-            params: { experienceSlug: experience.slug }
+            params: { experienceSlug: experience.slug },
+            hash: '#experience'
           }"
         >
 
