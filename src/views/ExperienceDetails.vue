@@ -3,7 +3,7 @@
     <h1>Experiences</h1>
     <h2>{{ experience.name }}</h2>
     <div class="experience-details">
-      <img :src="require('@/assets/' + experience.name)" :alt="experience.slug">
+      <img :src="require('@/assets/' + experience.image)" :alt="experience.slug">
       <p>{{ experience.description }}</p>
     </div>
   </section>
@@ -33,7 +33,7 @@ export default {
         experience => experience.slug == this.experienceSlug
       )
     }
-  }
+  },
 }
 </script>
 

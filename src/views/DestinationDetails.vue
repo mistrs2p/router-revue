@@ -35,7 +35,7 @@
         </router-link>
         </div>
       </div>
-      <!-- <router-view :key="$route.path" /> -->
+      <router-view :key="$route.path" />
       <!-- <router-view /> -->
     </section>
   </div>
@@ -48,12 +48,12 @@ export default {
   data() {
     return {}
   },
-  props: {
-    slug: {
-      type: String,
-      required: true
-    }
-  },
+  // props: {
+  //   slug: {
+  //     type: String,
+  //     required: true
+  //   }
+  // },
   computed: {
     destination() {
       return store.destinations.find(
