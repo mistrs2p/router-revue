@@ -22,6 +22,12 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: "NotFound",
+    component: () => import( /* webpackChunkName: "NotFound" */ "../views/NotFound"),
+    // props: true
+  },
 ];
 
 const router = createRouter({
