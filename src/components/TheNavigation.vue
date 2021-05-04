@@ -8,7 +8,7 @@
       <li 
         class="links"
         v-for="destination of destinations"
-        :key="destination.id"  
+        :key="destination.slug"  
       >
         <router-link
           :to="{ 

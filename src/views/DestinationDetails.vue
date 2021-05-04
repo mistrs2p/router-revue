@@ -29,13 +29,14 @@
             :src="require('@/assets/' + experience.image)" 
             :alt="experience.name"
           >
-          <span class="experience__text">
-            {{ experience.text }}
+          <span class="card__text">
+            {{ experience.name }}
           </span>
         </router-link>
         </div>
       </div>
-      <router-view />
+      <!-- <router-view :key="$route.path" /> -->
+      <!-- <router-view /> -->
     </section>
   </div>
 </template>
@@ -44,16 +45,21 @@
 import store from '@/store.js'
 export default {
   name: "DestinationDetails",
+  data() {
+    return {}
+  },
+  props: {
+    slug: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
     destination() {
       return store.destinations.find(
         destination => destination.slug == this.$route.params.slug
       )
-    },
-    // experiences() {
-    //   const experiences = store.destinations.experiences 
-    //   return experiences
-    // }
+    }
   }
 }
 </script>
@@ -65,6 +71,9 @@ export default {
     width: 100%;
     max-height: 400px;
   }
+  .experiences {
+    padding: 40px 0;
+  }
   .destination-details {
     display: flex;
     justify-content: space-between;
@@ -74,29 +83,25 @@ export default {
     font-size: 20px;
     text-align: left;
   }
-
   .cards {
     display: flex;
+    justify-content: space-between;
   }
-
   .cards img {
     max-height: 200px;
   }
-
   .card {
     padding: 0 20px;
     position: relative;
   }
-
   .card__text {
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: aliceblue;
+    color: white;
     font-size: 25px;
     font-weight: bold;
-    /* text-decoration: none; */
+    text-decoration: none;
   }
-
 </style>
