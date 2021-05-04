@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import store from "@/store";
 
 const routes = [
   {
@@ -19,8 +20,18 @@ const routes = [
         name: "experienceDetails",
         props: true,
         component: () => import( /* webpackChunkName: "experienceDetails" */ "../views/ExperienceDetails"),
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      const exists = store.destinations.find(
+        destination => destination.slug == to.params.slug
+      )
+      if(!exists) {
+        next({ name: 'NotFound'})
+      } else {
+        next()
       }
-    ]
+    }
   },
   {
     path: '/:pathMatch(.*)*',
