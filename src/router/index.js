@@ -45,6 +45,13 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
+    path: "/login",
+    name: "Login",
+    // props: true,
+    component: () => import(/* webpackChunkName: "Login" */ "../views/Login"),
+    meta: { requiresAuth: true },
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: () =>
@@ -75,7 +82,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if(to.meta.requiresAuth) {
     //  Need To Login
-    
+
   } else {
     next()
   }
