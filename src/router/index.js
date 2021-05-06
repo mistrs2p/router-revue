@@ -51,6 +51,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "Login" */ "../views/Login"),
   },
   {
+    path: "/invoices",
+    name: "Invoices",
+    // props: true,
+    component: () => import(/* webpackChunkName: "Invoices" */ "../views/Invoices"),
+    meta: { requiresAuth: true },
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: () =>
