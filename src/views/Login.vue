@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import store from '@/store'
 export default {
   data() {
     return {
@@ -21,7 +22,8 @@ export default {
   },
   methods: {
     login() {
-      
+      store.user = this.username
+      this.$router.push('/user') 
     }
   }
 }
