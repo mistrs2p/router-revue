@@ -80,9 +80,16 @@ const router = createRouter({
   linkExactActiveClass: "my-active-class",
 });
 router.beforeEach((to, from, next) => {
-  if(to.meta.requiresAuth) {
+  // if(to.meta.requiresAuth) {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
     //  Need To Login
-
+    if(!store.user) {
+      next({
+        name: 'Login'
+      }) 
+    } else {
+      next()
+    }
   } else {
     next()
   }
