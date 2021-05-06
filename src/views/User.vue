@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>User</h1>
+    <h1>Welcome {{ user }}</h1>
     <button @click="logOut" class="btn">Logout</button>
   </div>
 </template>
@@ -8,6 +8,11 @@
 <script>
 import store from '@/store'
 export default {
+  data() {
+    return {
+      user: store.user
+    }
+  },
   methods: {
     logOut() {
       store.user = null
