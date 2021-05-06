@@ -1,16 +1,11 @@
 <template>
   <span class="go-back">
-    <button @click="$router.go(-1)">
-      Go Back
-    </button>
+    <button @click="$router.go(-1)">Go Back</button>
   </span>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

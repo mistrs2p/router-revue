@@ -13,36 +13,42 @@ const routes = [
     path: "/destination/:slug",
     name: "DestinationDetails",
     // props: true,
-    component: () => import( /* webpackChunkName: "details" */ "../views/DestinationDetails"),
+    component: () =>
+      import(/* webpackChunkName: "details" */ "../views/DestinationDetails"),
     children: [
       {
         path: ":experienceSlug",
         name: "experienceDetails",
         props: true,
-        component: () => import( /* webpackChunkName: "experienceDetails" */ "../views/ExperienceDetails"),
+        component: () =>
+          import(
+            /* webpackChunkName: "experienceDetails" */ "../views/ExperienceDetails"
+          ),
       },
     ],
     beforeEnter: (to, from, next) => {
       const exists = store.destinations.find(
-        destination => destination.slug == to.params.slug
-      )
-      if(!exists) {
-        next({ name: 'NotFound'})
+        (destination) => destination.slug == to.params.slug
+      );
+      if (!exists) {
+        next({ name: "NotFound" });
       } else {
-        next()
+        next();
       }
-    }
+    },
   },
   {
     path: "/user",
     name: "User",
     // props: true,
-    component: () => import( /* webpackChunkName: "User" */ "../views/User")
+    component: () => import(/* webpackChunkName: "User" */ "../views/User"),
+    meta: { requiresAuth: true },
   },
   {
-    path: '/:pathMatch(.*)*',
+    path: "/:pathMatch(.*)*",
     name: "NotFound",
-    component: () => import( /* webpackChunkName: "NotFound" */ "../views/NotFound"),
+    component: () =>
+      import(/* webpackChunkName: "NotFound" */ "../views/NotFound"),
     // props: true
   },
 ];
@@ -50,23 +56,29 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
-    if(savedPosition) {
-      return savedPosition
+    if (savedPosition) {
+      return savedPosition;
     } else {
-      const position = {}
-      if(to.hash) {
-        position.selector = to.hash
-        if(document.querySelector(to.hash)) {
-          return position
+      const position = {};
+      if (to.hash) {
+        position.selector = to.hash;
+        if (document.querySelector(to.hash)) {
+          return position;
         }
-        return false
+        return false;
       }
-
     }
   },
   routes,
   linkExactActiveClass: "my-active-class",
 });
+router.beforeEach((to, from, next) => {
+  if(to.meta.requiresAuth) {
+    //  Need To Login
+    
+  } else {
+    next()
+  }
+});
 
-router.beforeEach((to, from, next) => {})
 export default router;

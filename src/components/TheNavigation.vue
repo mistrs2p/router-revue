@@ -5,15 +5,15 @@
       <li class="links">
         <router-link to="/">Home</router-link>
       </li>
-      <li 
+      <li
         class="links"
         v-for="destination of destinations"
-        :key="destination.slug"  
+        :key="destination.slug"
       >
         <router-link
-          :to="{ 
+          :to="{
             name: 'DestinationDetails',
-            params: { slug: destination.slug}
+            params: { slug: destination.slug },
           }"
         >
           {{ destination.name }}
@@ -24,54 +24,54 @@
 </template>
 
 <script>
-import store from '@/store'
+import store from "@/store";
 export default {
   name: "TheNavigation",
   data() {
     return {
-      destinations: store.destinations
-    }
-  }
-}
+      destinations: store.destinations,
+    };
+  },
+};
 </script>
 
 <style scoped>
-  #nav {
-    display: flex;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    border-bottom: 1px solid grey;
-    z-index: 1;
-  }
+#nav {
+  display: flex;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid grey;
+  z-index: 1;
+}
 
-  #nav a {
-    color: #2c3e50;
-    text-decoration: none;
-  }
+#nav a {
+  color: #2c3e50;
+  text-decoration: none;
+}
 
-  #nav a.my-active-class {
-    color: #ab26ab;
-  }
+#nav a.my-active-class {
+  color: #ab26ab;
+}
 
-  .nav-links {
-    display: flex;
-  }
+.nav-links {
+  display: flex;
+}
 
-  .links {
-    padding-right: 20px;
-    list-style: none;
-  }
+.links {
+  padding-right: 20px;
+  list-style: none;
+}
 
-  .links:hover {
-    text-decoration: underline;
-  }
+.links:hover {
+  text-decoration: underline;
+}
 
-  .logo {
-    font-size: 20px;
-    color: purple;
-    font-weight: bold;
-  }
+.logo {
+  font-size: 20px;
+  color: purple;
+  font-weight: bold;
+}
 </style>

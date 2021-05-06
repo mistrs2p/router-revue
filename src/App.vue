@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import TheNavigation from '@/components/TheNavigation'
+import TheNavigation from "@/components/TheNavigation";
 export default {
   name: "App",
   components: {
-    TheNavigation
-  }
-}
+    TheNavigation,
+  },
+};
 </script>
 <style>
 #app {
@@ -33,7 +33,7 @@ export default {
 }
 .slide-enter-active,
 .slide-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease ;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .slide-enter-from,
