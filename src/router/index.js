@@ -34,6 +34,12 @@ const routes = [
     }
   },
   {
+    path: "/user",
+    name: "User",
+    // props: true,
+    component: () => import( /* webpackChunkName: "User" */ "../views/User")
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: "NotFound",
     component: () => import( /* webpackChunkName: "NotFound" */ "../views/NotFound"),
